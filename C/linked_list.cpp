@@ -10,7 +10,7 @@ Date: 4/11/2018
 
 #include<stdio.h>
 #include<stdlib.h>
-#define null 0
+#define null NULL
 
 //structure of each linked list node 
 struct node
@@ -64,7 +64,7 @@ int pop(){
 	if(!head){
 		//if head is null, nothing in list
 		printf("Empty list \n");
-		return null;
+		return 0;
 	}
 	//create a temp pointer to head node, as we will need it to free its memory
 	node * temp = head;
@@ -117,7 +117,7 @@ int pop_back(){
 
 	if(!head){
 		printf("Empty List\n");
-		return null;
+		return 0;
 
 	}else{
 
@@ -170,17 +170,29 @@ void insert_at(int position , int data){
 		head = temp;
 		return;
 	}
-	while(current_pos!=position-1){
-		last = last->next;
-		current_pos++;
-	}
+	while(current_pos++!=position-1)last = last->next;
 	temp->next = last->next;
 	last->next = temp;
 
 
 }
 
+int get_nth_item(int n){
+	if(n<0){
+		printf("Index can't be less than zero!\n");
+		exit(EXIT_FAILURE);
+	}
+	int current_pos = 0;
+	node * last = head;
+	while(current_pos++!=n){
+		last=last->next;
+		if(!last){
+			printf("Index can't be greater than the size of linked list\n");
+		}
+	}
+	return last->data;
 
+}
 
 void remove_node(int position){
 	int current_pos = 0;
@@ -266,7 +278,7 @@ int main(){
 	printf("\n\nLinked list after removing node at position 0 : \n");
 	print_linked_list();
 
-
+	printf("data at 3rd position is %d\n", get_nth_item(3));
 		
 
 	return 0;

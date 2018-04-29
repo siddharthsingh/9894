@@ -1,5 +1,6 @@
 /* 
-Dynamic array
+Dynamic array implementation
+Created by Siddharth Singh (01siddharthsingh@gmail.com)
 
 
 */
@@ -52,7 +53,7 @@ int main(){
 	for(i;i<100000;i++){
 		addValue(i,arr);
 	}
-	
+
 	//print value to see if it is storing values properly
 	printf("value added %d\n" , arr[i-1]);
 

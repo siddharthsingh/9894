@@ -53,8 +53,8 @@ void preorder_traversal(){
 }
 
 void postorder_traaversal(){
-	
-	if(!node)return;
+
+		if(!node)return;
 	inorder_traversal(node->left);
 	inorder_traversal(node->right);
 	printf("%d\n", node->data);

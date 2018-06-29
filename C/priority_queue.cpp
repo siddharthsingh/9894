@@ -34,11 +34,19 @@ void queue(int data, int priority){
 	}
 
 	struct node * temp2 = head;
-	while(temp2->priority<priority){
-		temp2 = temp2->next;
-	}
+
+	while(temp2->priority < priority && temp2->next != null){
 	printf("working\n");
 
+		temp2 = temp2->next;
+	}
+
+	if(temp2->next == null){
+		tail = temp;
+		temp2->next = temp;
+		temp->previous = temp2;
+		return;
+	}
 	if(temp2->previous != null){
 		temp2->previous->next = temp;
 	}else{
@@ -103,10 +111,12 @@ int main(){
 	queue(2, 1);
 	queue(3,2);
 	queue(4,3);
-	print_queue();
-	deque();
-	deque();
-	print_queue();
+	// print_queue();
+	printf("%d",deque());
+	printf("%d",deque());
+	
+	// deque();
+	// print_queue();
 
 
 }
